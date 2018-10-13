@@ -1,7 +1,7 @@
 var echarts = require('echarts');
 var getData = require('./data').getData;
 var preprocessData = getData();
-var startTime = preprocessData[0].value[1];
+var startTime = preprocessData[0] && preprocessData[0].value[1];
 
 function renderItem(params, api) {
     var categoryIndex = api.value(0);
@@ -36,7 +36,7 @@ var option = {
         }
     },
     title: {
-        text: 'Profile',
+        text: 'qrn性能分析',
         left: 'center'
     },
     dataZoom: [{
@@ -73,7 +73,7 @@ var option = {
         }
     },
     yAxis: {
-        data: [startTime]
+        data: [startTime || '']
     },
     series: [{
         type: 'custom',
@@ -95,8 +95,9 @@ var myChart = echarts.init(document.getElementById('app'));
 myChart.setOption(option);
 
 document.getElementById('btn').onclick = function() {
-    // document.getElementById('log').value;
     preprocessData = getData();
+    startTime = preprocessData[0] && preprocessData[0].value[1]
+
     myChart.setOption({
         tooltip: {
             formatter: function (params) {
@@ -104,7 +105,7 @@ document.getElementById('btn').onclick = function() {
             }
         },
         title: {
-            text: 'Profile',
+            text: 'qrn性能分析',
             left: 'center'
         },
         dataZoom: [{
@@ -141,7 +142,7 @@ document.getElementById('btn').onclick = function() {
             }
         },
         yAxis: {
-            data: [startTime]
+            data: [startTime || '']
         },
         series: [{
             type: 'custom',
