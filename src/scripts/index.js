@@ -39,7 +39,7 @@ var option = {
         }
     },
     title: {
-        text: 'qrn性能分析',
+        text: 'rn性能分析',
         left: 'center'
     },
     dataZoom: [{
@@ -76,7 +76,7 @@ var option = {
         }
     },
     yAxis: {
-        data: [startTime || '']
+        data: [((preprocessData[preprocessData.length - 1] && preprocessData[preprocessData.length - 1].value[2]) - startTime || '') + 'ms']
     },
     series: [{
         type: 'custom',
@@ -111,7 +111,7 @@ document.getElementById('btn').onclick = function() {
             }
         },
         title: {
-            text: 'qrn性能分析',
+            text: 'rn性能分析',
             left: 'center'
         },
         dataZoom: [{
@@ -148,7 +148,7 @@ document.getElementById('btn').onclick = function() {
             }
         },
         yAxis: {
-            data: [startTime || '']
+            data: [((preprocessData[preprocessData.length - 1] && preprocessData[preprocessData.length - 1].value[2]) - startTime || '') + 'ms']
         },
         series: [{
             type: 'custom',
