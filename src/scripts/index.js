@@ -31,6 +31,9 @@ function renderItem(params, api) {
 
 var option = {
     tooltip: {
+        position: function (point, params, dom, rect, size) {
+            return [point[0] - 20, '10%'];
+        },
         formatter: function (params) {
             return params.marker + params.name + ': ' + params.value[3] + ' ms';
         }
@@ -100,6 +103,9 @@ document.getElementById('btn').onclick = function() {
 
     myChart.setOption({
         tooltip: {
+            position: function (point, params, dom, rect, size) {
+                return [point[0] - 20, '10%'];
+            },
             formatter: function (params) {
                 return params.marker + params.name + ': ' + params.value[3] + ' ms';
             }
